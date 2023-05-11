@@ -3,14 +3,16 @@ const jwt = require('jsonwebtoken')
 
 module.exports = class LoginController {
     
-    static async login(req, res, next) {
+    static async login(req, res) {
         try {
             // Procurando usuário
+            console.log(req.body.matricula)
             const usuario = await usuarios.findOne({
                 where: {
                     matricula: req.body.matricula
                 }
             })
+            
             // Caso exista o usuário
             if (usuario) {
                 const token = await jwt.sign(usuario.id, process.env.JWT_KEY)

@@ -1,5 +1,4 @@
-const { where } = require("sequelize")
-const { usuarios, plantaos } = require("../models")
+const { plantaos } = require("../models")
 
 module.exports = class PlantaoController {
     static async store(req, res) {
