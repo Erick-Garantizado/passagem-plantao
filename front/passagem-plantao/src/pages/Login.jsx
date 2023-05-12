@@ -1,32 +1,50 @@
-import { Box, Card, Container, TextField, Typography } from '@mui/material'
+import { Alert, Card, Container, Snackbar, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import Logo from './suporte_TI-1.png'
 import { LoadingButton } from '@mui/lab'
-import axios from 'axios'
+import api from '../services/api'
+import { useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
+  const navigate = useNavigate()
   const [matricula, setMatricula] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [open, setOpen] = useState(false)
 
   const handleClick = async () => {
     setLoading(true)
-    const resp = await axios.post('http://localhost:8080/login',{
+    api.post('http://localhost:3001/login',{
       matricula:matricula
     })
-    .then(() => {
-      console.log(resp)
+    .then(({data}) => {
+      // redirecionar para area de passagem de plantao
+      localStorage.setItem('user-token', data.token)
+      navigate('/Area')
     })
     .catch((e) => {
-      console.log(resp)
+      // Popup dizendo que nao foi encontrado ninguem com a matricula informada
+      setError(e.response.data.error)
+      setOpen(true)
     })
     .finally(() => {
       setLoading(false)
+      setTimeout(() => {
+        setOpen(false)
+      }, 2000)
     })
   }
 
   return (
     <>
     <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+    <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <Alert severity='error' sx={{ width:'100%' }}>
+        {error}
+      </Alert>
+    </Snackbar>
+
       <Card sx={{ mt: 5, py: 5, px: 10, width: '40%', display: 'flex', 
       alignItems: 'center', flexDirection: 'column', }}>
         <img src={ Logo } alt="logo TI" width="250" />
