@@ -6,7 +6,6 @@ module.exports = class LoginController {
     static async login(req, res) {
         try {
             // Procurando usuário
-            console.log(req.body.matricula)
             const usuario = await usuarios.findOne({
                 where: {
                     matricula: req.body.matricula
