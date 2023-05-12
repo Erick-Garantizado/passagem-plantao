@@ -3,10 +3,12 @@ const app = express();
 const routerPrivado = require('./routes/privado')
 const routerPublico = require('./routes/publico');
 const LoginController = require('./controllers/LoginController');
+const cors = require('cors')
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
+app.use(cors())
 app.use('/', routerPublico)
 app.use('/plantao', LoginController.validaToken, routerPrivado)
 
