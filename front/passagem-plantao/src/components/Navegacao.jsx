@@ -20,6 +20,10 @@ const Navegacao = () => {
     handleClose()
     navigate('/passagem')
   }
+  const handleListar = () => {
+    handleClose()
+    navigate('/listagem')
+  }
   
   return (
     <AppBar position='static'>
@@ -48,7 +52,7 @@ const Navegacao = () => {
         >
           <MenuItem onClick={handlePassar}>Passar plantão</MenuItem>
           <MenuItem onClick={handleClose}>Receber Plantão</MenuItem>
-          <MenuItem onClick={handleClose}>Listar Plantões</MenuItem>
+          <MenuItem onClick={handleListar}>Listar Plantões</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

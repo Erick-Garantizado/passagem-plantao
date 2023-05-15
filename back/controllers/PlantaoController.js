@@ -7,7 +7,7 @@ module.exports = class PlantaoController {
                 turno: req.body.turno,
                 mat_pass: req.usuarioId,
                 mat_receb: null,
-                data: req.body.data,
+                data: null,
                 celular: req.body.celular,
                 fone: req.body.fone,
                 tablet: req.body.tablet,

@@ -15,13 +15,13 @@ const Login = () => {
 
   const handleClick = async () => {
     setLoading(true)
-    api.post('http://localhost:3001/login',{
+    api.post('/login',{
       matricula:matricula
     })
     .then(({data}) => {
       // redirecionar para area de passagem de plantao
       localStorage.setItem('user-token', data.token)
-      navigate('/Area')
+      navigate('/area')
     })
     .catch((e) => {
       // Popup dizendo que nao foi encontrado ninguem com a matricula informada
@@ -58,7 +58,7 @@ const Login = () => {
           sx={{ my: 3 }}
           fullWidth
           onChange={(e) => setMatricula(e.target.value)}
-          value={matricula}
+          value={matricula}          
           />
 
         <LoadingButton loading={loading} 
