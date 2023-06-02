@@ -21,62 +21,8 @@ module.exports = {
           key: 'id'
         },
       },
-      mat_receb: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'usuarios'
-          },
-          key: 'id'
-        },
-      },
-      data: {
-        type: Sequelize.DATE
-      },
-      celular: {
-        type: Sequelize.INTEGER
-      },
-      fone: {
-        type: Sequelize.INTEGER
-      },
-      tablet: {
-        type: Sequelize.INTEGER
-      },
-      roteador: {
-        type: Sequelize.INTEGER
-      },
-      toner_pb: {
-        type: Sequelize.INTEGER
-      },
-      toner_colorido: {
-        type: Sequelize.INTEGER
-      },
-      caixa_ferramentas: {
-        type: Sequelize.INTEGER
-      },
-      webcam: {
-        type: Sequelize.INTEGER
-      },
-      unidade_imagem: {
-        type: Sequelize.INTEGER
-      },
-      suporte_tablet: {
-        type: Sequelize.INTEGER
-      },
-      mouse: {
-        type: Sequelize.INTEGER
-      },
-      notebook: {
-        type: Sequelize.INTEGER
-      },
-      gabinete: {
-        type: Sequelize.INTEGER
-      },
-      caixa_cabos: {
-        type: Sequelize.INTEGER
-      },
       observacao: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(500)
       },
       createdAt: {
         allowNull: false,
