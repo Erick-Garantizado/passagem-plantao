@@ -9,7 +9,7 @@ const Area = () => {
   return (
     <>
     <Navegacao/>
-    <Container>
+    <Container >
         <div className="corpo" ></div>
     </Container>
     </>

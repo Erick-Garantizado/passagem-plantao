@@ -24,6 +24,10 @@ const Navegacao = () => {
     handleClose()
     navigate('/listagem')
   }
+  const handleSair = () => {
+    localStorage.removeItem('user-token')
+    navigate('/')
+  }
   
   return (
     <AppBar position='static'>
@@ -51,8 +55,8 @@ const Navegacao = () => {
           }}
         >
           <MenuItem onClick={handlePassar}>Passar plantão</MenuItem>
-          <MenuItem onClick={handleClose}>Receber Plantão</MenuItem>
-          <MenuItem onClick={handleListar}>Listar Plantões</MenuItem>
+          <MenuItem onClick={handleListar} divider>Receber Plantão</MenuItem>
+          <MenuItem onClick={handleSair}>Sair</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

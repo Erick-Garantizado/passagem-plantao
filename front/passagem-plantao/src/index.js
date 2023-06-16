@@ -10,7 +10,7 @@ import Listar from './pages/Listar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
+  <div className='back-ground'>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>} />
@@ -19,5 +19,5 @@ root.render(
         <Route path='/listagem' element={<Listar/>} />
       </Routes>
     </BrowserRouter>
-  </>
+  </div>
 );
