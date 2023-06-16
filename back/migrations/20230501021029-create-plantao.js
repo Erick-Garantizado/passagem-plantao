@@ -21,6 +21,9 @@ module.exports = {
           key: 'id'
         },
       },
+      situacao: {
+        type: Sequelize.BOOLEAN
+      },
       observacao: {
         type: Sequelize.STRING(500)
       },

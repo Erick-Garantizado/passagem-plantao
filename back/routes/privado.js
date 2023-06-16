@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.post('/salvar', PlantaoController.store)
 router.get('/listar', PlantaoController.show)
+router.get('/teste', PlantaoController.teste)
 
 
 

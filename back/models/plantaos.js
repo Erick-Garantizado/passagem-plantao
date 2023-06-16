@@ -10,28 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      
+      this.belongsTo(models.usuarios, {
+        as: 'plantonista',
+        foreignKey: 'mat_pass'
+      })
     }
   }
   plantaos.init({
     turno: DataTypes.CHAR,
     mat_pass: DataTypes.INTEGER,
-    mat_receb: DataTypes.INTEGER,
-    data: DataTypes.DATE,
-    celular: DataTypes.INTEGER,
-    fone: DataTypes.INTEGER,
-    tablet: DataTypes.INTEGER,
-    roteador: DataTypes.INTEGER,
-    toner_pb: DataTypes.INTEGER,
-    toner_colorido: DataTypes.INTEGER,
-    caixa_ferramentas: DataTypes.INTEGER,
-    webcam: DataTypes.INTEGER,
-    unidade_imagem: DataTypes.INTEGER,
-    suporte_tablet: DataTypes.INTEGER,
-    mouse: DataTypes.INTEGER,
-    notebook: DataTypes.INTEGER,
-    gabinete: DataTypes.INTEGER,
-    caixa_cabos: DataTypes.INTEGER,
+    situacao: DataTypes.BOOLEAN,
     observacao: DataTypes.STRING
   }, {
     sequelize,
