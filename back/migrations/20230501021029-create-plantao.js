@@ -21,6 +21,15 @@ module.exports = {
           key: 'id'
         },
       },
+      mat_receb: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'usuarios'
+          },
+          key: 'id'
+        },
+      },
       situacao: {
         type: Sequelize.BOOLEAN
       },
