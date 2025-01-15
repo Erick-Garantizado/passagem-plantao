@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   plantaos.init({
     turno: DataTypes.CHAR,
     mat_pass: DataTypes.INTEGER,
+    mat_receb: DataTypes.INTEGER,
     situacao: DataTypes.BOOLEAN,
     observacao: DataTypes.STRING
   }, {

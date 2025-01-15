@@ -4,9 +4,9 @@ const router = express.Router()
 
 
 router.post('/salvar', PlantaoController.store)
+router.post('/receber', PlantaoController.receber)
 router.get('/listar', PlantaoController.show)
 router.get('/teste', PlantaoController.teste)
-
 
 
 module.exports = router

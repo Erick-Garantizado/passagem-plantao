@@ -1,53 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import Navegacao from '../components/Navegacao'
-import { Card, CardActions, CardContent, Container, Typography } from '@mui/material'
-import { LoadingButton } from '@mui/lab'
+import { Container, Typography, Box } from '@mui/material'
+
 import api from '../services/api'
+import CardLista from '../components/CardLista'
 
 const Listar = () => {
-  const [plantao, setPlantao] = useState([])
-
+  
   useEffect(() => {
     api.get('/plantao/listar')
-    .then( ( {data} ) => {
-      setPlantao(data.plantao)
-    })
-    .catch( (e) => {
-      alert(e)
-    })
-    
+      .then( ({ data }) => {
+        setPlantao(data.plantao)
+        
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+
   }, [])
+
+  const [plantao, setPlantao] = useState([])
   
-  
+
   return (
     <>
-      <Navegacao/>
-      <Container><br />        
+      <Navegacao />
+      <Container sx={{ width: '100vw', height: '93vh' }}><br />
         {
-          plantao.map((dadoPlantao) => (
-            <>
-              <Card sx={{ minWidth: 275, mb:3 }}>
-                <CardContent>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {/** plantonista */}
-                    Plantonista: {dadoPlantao.plantonista.nome}
-                  </Typography>
-                  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {/** turno */}
-                    Turno: {dadoPlantao.turno}
-                  </Typography><hr />
-                  <Typography variant="body2">
-                    {/** observação */}
-                    Observação: <br />
-                    {dadoPlantao.observacao}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <LoadingButton size="small" variant='contained' color='success'>Receber plantão</LoadingButton>
-                </CardActions>
-              </Card>
-            </>
-          ))
+          plantao.length !== 0 ?
+          plantao.map( (dadoPlantao) => (
+            <CardLista plantonista={dadoPlantao.plantonista} 
+            turno={dadoPlantao.turno}
+            observacao={dadoPlantao.observacao}
+            chave={dadoPlantao.id}
+            />
+          )) :
+          (<>
+            <Typography variant='h4'>
+              Sem registro de plantao a ser recebido
+            </Typography>
+            <Box className="corpo" ></Box>
+          </>
+            
+          )
         }
       </Container>
     </>

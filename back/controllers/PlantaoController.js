@@ -1,4 +1,4 @@
-const { plantaos } = require("../models")
+const { plantaos, usuarios } = require("../models")
 
 module.exports = class PlantaoController {
     static async store(req, res) {
@@ -28,13 +28,15 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.findAll({
                 where: {
-                    situacao: 0
+                    situacao: '0'
                 },
                 include: 'plantonista'
             })
 
-            res.json({plantao})
+            res.json({ plantao })
         } catch (e) {
+            console.log(e)
+            
             res.status(500).json({
                 error: e.message
             })
@@ -43,15 +45,28 @@ module.exports = class PlantaoController {
 
     static async teste(req, res) {
         try {
-            const plantao = await plantaos.findAll({include: 'plantonista'})
+            const plantao = await plantaos.findAll({ include: 'plantonista' })
             res.json(plantao)
-            
+
         } catch (error) {
             res.status(500).json({
                 error: error.message
             })
         }
+    }
 
-        
+    static async receber(req, res) {
+        try {
+            const num = req.body.chave
+            const plantao = await plantaos.findByPk(num)
+            plantao.mat_receb = Number(req.usuarioId)
+            plantao.situacao = true
+            const resp = await plantao.save()
+            res.json(plantao)
+        } catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
     }
 }

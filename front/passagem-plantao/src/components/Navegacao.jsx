@@ -1,7 +1,8 @@
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../services/api'
 
 const Navegacao = () => {
   // variaveis
@@ -17,6 +18,7 @@ const Navegacao = () => {
     setAnchorEl(null)
   }
   const handlePassar = () => {
+
     handleClose()
     navigate('/passagem')
   }

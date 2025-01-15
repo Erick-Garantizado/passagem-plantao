@@ -21,16 +21,15 @@ const Passar = () => {
         setLoading(true)
         
         api.post('/plantao/salvar', {
-            turno : turno,
-            observacao: observacao
+            turno : turno.trim(),
+            observacao: observacao.trim()
         }).then(({data}) => {
             setSucesso(true)
-            console.log(data)
             setTimeout(() => {
                 navigate('/listagem')
             }, 2000)
         }).catch((e) => {
-            setError(e.response.status)
+            e.message === "Network Error" ? setError("Erro de conexão com banco.") : setError(e.message)
         }).finally(()=>{
             
             setLoading(false)
@@ -45,7 +44,7 @@ const Passar = () => {
     return (
         <>
             <Navegacao />
-            <Container >
+            <Container sx={{ width:'100vw', height:'100vh' }} >
                 <Snackbar open={sucesso} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                     <Alert severity='success' sx={{ width: '100%' }}>
                         Dados salvos!
