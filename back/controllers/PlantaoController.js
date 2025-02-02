@@ -28,7 +28,7 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.findAll({
                 where: {
-                    situacao: '0'
+                    situacao: false
                 },
                 include: 'plantonista'
             })
@@ -43,18 +43,18 @@ module.exports = class PlantaoController {
         }
     }
 
-    static async teste(req, res) {
+    static async showMy(req, res) {
         try {
-            const plantao = await plantaos.findAll({ include: 'plantonista' })
-            res.json(plantao)
+            const plantao = await plantaos.findAll({
+                where: {
 
-        } catch (error) {
-            res.status(500).json({
-                error: error.message
+                }
             })
+        } catch (e) {
+            
         }
     }
-
+    
     static async receber(req, res) {
         try {
             const num = req.body.chave
@@ -63,6 +63,34 @@ module.exports = class PlantaoController {
             plantao.situacao = true
             const resp = await plantao.save()
             res.json(plantao)
+        } catch (error) {
+            res.status(500).json({
+                error: error.message
+            })
+        }
+    }
+    
+    static async findCurrentUser(req, res) {
+        try {
+            console.log(req.usuarioId)
+            const usuario = await usuarios.findOne({
+                where: {
+                    id: req.usuarioId
+                }
+            })
+            res.json({ usuario })
+        } catch (e) {
+            res.status(500).json({
+                error: e.message
+            })
+        }
+    }
+
+    static async teste(req, res) {
+        try {
+            const plantao = await plantaos.findAll({ include: 'plantonista' })
+            res.json(plantao)
+    
         } catch (error) {
             res.status(500).json({
                 error: error.message
