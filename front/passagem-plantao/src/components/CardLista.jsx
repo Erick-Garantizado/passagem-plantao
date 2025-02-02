@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material'
-import { LoadingButton } from '@mui/lab'
+// import { LoadingButton } from '@mui/lab'
 import api from '../services/api'
 
 
@@ -12,7 +12,6 @@ const CardLista = (props) => {
 	const handleReceber = () => {
     api.post('/plantao/receber', {chave:props.chave})
     .then( ({ data }) => {
-
       setOpen(true)
       alert('recebido')
       window.location.reload()
@@ -29,7 +28,7 @@ const CardLista = (props) => {
 
   return (
     <>
-      <Card sx={{ minWidth: 275, mb: 3 }} key={props.chave}>
+      <Card sx={{ maxWidth: 345, minWidth: 275, mb: 3 }} key={props.chave}>
           <CardContent>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
               {/** plantonista */}
@@ -38,7 +37,7 @@ const CardLista = (props) => {
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               {/** turno */}
               Turno: {props.turno}
-              </Typography><hr />
+              </Typography>
               <Typography variant="body2">
               {/** observação */}
               Observação: <br />
