@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Area from './pages/Area';
 import Passar from './pages/Passar';
 import Listar from './pages/Listar';
+import MeusPlantoes from './pages/MeusPlantoes';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,6 +18,7 @@ root.render(
         <Route path='/area' element={<Area/>} />
         <Route path='/passagem' element={<Passar/>} />
         <Route path='/listagem' element={<Listar/>} />
+        <Route path='/meusplatoes' element={<MeusPlantoes/>} />
       </Routes>
     </BrowserRouter>
   </div>
