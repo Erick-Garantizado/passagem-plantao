@@ -18,7 +18,7 @@ root.render(
         <Route path='/area' element={<Area/>} />
         <Route path='/passagem' element={<Passar/>} />
         <Route path='/listagem' element={<Listar/>} />
-        <Route path='/meusplatoes' element={<MeusPlantoes/>} />
+        <Route path='/meusplantoes' element={<MeusPlantoes/>} />
       </Routes>
     </BrowserRouter>
   </div>
