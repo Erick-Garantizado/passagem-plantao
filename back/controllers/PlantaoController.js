@@ -32,7 +32,6 @@ module.exports = class PlantaoController {
                 },
                 include: 'plantonista'
             })
-
             res.json({ plantao })
         } catch (e) {        
             res.status(500).json({
