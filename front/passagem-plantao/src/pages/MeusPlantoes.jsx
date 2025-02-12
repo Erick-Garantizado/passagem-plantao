@@ -7,7 +7,7 @@ import api from '../services/api'
 
 const MeusPlantoes = () => {
   const [plantao, setPlantao] = useState([])
-  
+
   useEffect( () => {
     api.get('plantao/meus')
     .then(( { data } ) => {
@@ -30,7 +30,7 @@ const MeusPlantoes = () => {
             <CardLista 
             plantonista={0} 
             turno={dado.turno}
-            observacao={dado.observacao}
+            data={dado.createdAt}
             chave={dado.id}
             />
           )) 
