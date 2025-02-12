@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material'
 // import { LoadingButton } from '@mui/lab'
-import api from '../services/api'
+// import api from '../services/api'
 
 
 const CardLista = (props) => {
-  const [open, setOpen] = useState(false)
   const data = new Date(props.data)
-  // const handleClose = () => { setOpen(false) }
-  // const handleOpen = () => { setOpen(true) }
 
 	const handleReceber = () => {
 
@@ -52,7 +49,7 @@ const CardLista = (props) => {
       </Card>
       <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={open}
+          // open={open}
           // onClick={handleClose}
         >
         <CircularProgress color="inherit" />
