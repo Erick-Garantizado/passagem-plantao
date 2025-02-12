@@ -30,7 +30,9 @@ const Passar = () => {
                 navigate('/listagem')
             }, 2000)
         }).catch((e) => {
-            e.message === "Network Error" ? setError("Erro de conexão com banco.") : setError(e.message)
+            e.message === "Network Error" ? 
+            setError("Erro de conexão com banco.") : 
+            setError(e.message)
         }).finally(()=>{
             
             setLoading(false)
