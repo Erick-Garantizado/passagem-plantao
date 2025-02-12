@@ -45,8 +45,8 @@ const Passar = () => {
     return (
         <>
           <Navegacao />
-          <Container sx={{ width:'100vw', height:'100vh', backgroundColor: 'white', 
-            display:'flex', flexDirection:'column', alignItems: 'center'
+          <Container sx={{ width:'100vw', height:'89vh', backgroundColor: 'white', 
+            display:'flex', flexDirection:'column', alignItems: 'center', boxShadow:10
            }} >
             <Snackbar open={sucesso} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                 <Alert severity='success' sx={{ width: '100%' }}>

@@ -9,7 +9,7 @@ const Listar = () => {
   useEffect( () => {
     api.get('/plantao/listar')
       .then( ({ data }) => {
-        setPlantao(data.plantao)        
+        setPlantao(data.plantao)
       })
       .catch((e) => {
         alert(e)
@@ -22,8 +22,8 @@ const Listar = () => {
   return (
     <>
       <Navegacao />
-      <Container sx={{ width: '100vw', height: '93vh', display:'flex',
-        flexWrap:'wrap', flexDirection: 'column'
+      <Container sx={{ width: '100vw', height: '93vh', backgroundColor: 'white',
+        display:'flex', flexWrap:'wrap', flexDirection: 'column'
        }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (
@@ -33,14 +33,13 @@ const Listar = () => {
             observacao={dado.observacao}
             chave={dado.id}
             />
-          )) 
+          ))
           :
           (
             <>
               <Typography variant='h4'>
                 Sem registro de plantao a ser recebido
               </Typography>
-              <Box className="corpo" ></Box>
             </>
           )
         }
