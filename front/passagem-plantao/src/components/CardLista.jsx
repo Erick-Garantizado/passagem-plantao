@@ -6,24 +6,27 @@ import api from '../services/api'
 
 const CardLista = (props) => {
   const [open, setOpen] = useState(false)
+  const data = new Date(props.data)
   // const handleClose = () => { setOpen(false) }
   // const handleOpen = () => { setOpen(true) }
 
 	const handleReceber = () => {
-    api.post('/plantao/receber', {chave:props.chave})
-    .then( ({ data }) => {
-      setOpen(true)
-      alert('recebido')
-      window.location.reload()
-    })
-    .catch( (e) => {
-      console.log(e)
-      setOpen(false)
-      alert('erro')
-    })
-    .finally( () => {
-      setOpen(false)
-    })
+
+  //   api.post('/plantao/receber', {chave:props.chave})
+  //   .then( ({ data }) => {
+  //     setOpen(true)
+  //     alert('recebido')
+  //     window.location.reload()
+  //   })
+  //   .catch( (e) => {
+  //     console.log(e)
+  //     setOpen(false)
+  //     alert('erro')
+  //   })
+  //   .finally( () => {
+  //     setOpen(false)
+  //   })
+  
   }
 
   return (
@@ -39,14 +42,12 @@ const CardLista = (props) => {
               Turno: {props.turno}
               </Typography>
               <Typography variant="body2">
-              {/** observação */}
-              Observação: <br />
-              {props.observacao}
+                Data: {data.toLocaleDateString("pt-BR")}
               </Typography>
           </CardContent>
           <CardActions>
               <Button size="small" variant='contained' color='success' 
-              onClick={handleReceber}>Receber plantão</Button>
+              onClick={handleReceber}>Detalhes</Button>
           </CardActions>
       </Card>
       <Backdrop
