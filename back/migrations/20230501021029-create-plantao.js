@@ -12,7 +12,7 @@ module.exports = {
       turno: {
         type: Sequelize.CHAR
       },
-      mat_pass: {
+      id_pass: {
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -21,7 +21,7 @@ module.exports = {
           key: 'id'
         },
       },
-      mat_receb: {
+      id_receb: {
         type: Sequelize.INTEGER,
         references: {
           model: {
