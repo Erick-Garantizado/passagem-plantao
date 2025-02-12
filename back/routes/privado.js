@@ -6,8 +6,8 @@ const router = express.Router()
 router.post('/salvar', PlantaoController.store)
 router.post('/receber', PlantaoController.receber)
 router.get('/listar', PlantaoController.show)
-router.get('/listarMeus', PlantaoController.showMy)
-router.get('/usuarioAtual', PlantaoController.findCurrentUser)
+router.get('/meus', PlantaoController.showMy)
+router.get('/usuarioAtual', PlantaoController.currentUser)
 
 router.get('/teste', PlantaoController.teste)
 
