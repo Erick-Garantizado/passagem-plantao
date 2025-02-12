@@ -5,14 +5,14 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.create({
                 turno: req.body.turno,
-                mat_pass: req.usuarioId,
+                id_pass: req.usuarioId,
                 situacao: false,
                 observacao: req.body.observacao
             })
 
             res.json({
                 turno: plantao.turno,
-                mat_pass: plantao.mat_pass,
+                id_pass: plantao.mat_pass,
                 situacao: plantao.situacao,
                 observacao: plantao.observacao
             })
@@ -34,9 +34,7 @@ module.exports = class PlantaoController {
             })
 
             res.json({ plantao })
-        } catch (e) {
-            console.log(e)
-            
+        } catch (e) {        
             res.status(500).json({
                 error: e.message
             })
@@ -47,11 +45,15 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.findAll({
                 where: {
-
+                    id_pass: req.usuarioId
                 }
             })
+            console.log({plantao})
+            res.json({ plantao })
         } catch (e) {
-            
+            res.status(500).json({
+                error: e.message
+            })
         }
     }
     
@@ -59,7 +61,7 @@ module.exports = class PlantaoController {
         try {
             const num = req.body.chave
             const plantao = await plantaos.findByPk(num)
-            plantao.mat_receb = Number(req.usuarioId)
+            plantao.id_receb = Number(req.usuarioId)
             plantao.situacao = true
             const resp = await plantao.save()
             res.json(plantao)
@@ -70,9 +72,8 @@ module.exports = class PlantaoController {
         }
     }
     
-    static async findCurrentUser(req, res) {
+    static async currentUser(req, res) {
         try {
-            console.log(req.usuarioId)
             const usuario = await usuarios.findOne({
                 where: {
                     id: req.usuarioId
