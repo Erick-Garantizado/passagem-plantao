@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navegacao from '../components/Navegacao'
-import { Container, Typography, Box } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import api from '../services/api'
 import CardLista from '../components/CardLista'
 
