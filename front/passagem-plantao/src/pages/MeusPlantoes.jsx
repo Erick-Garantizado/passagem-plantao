@@ -1,34 +1,34 @@
 import { useState, useEffect } from 'react'
-import { Typography, Container, Box } from '@mui/material'
+import { Typography, Container } from '@mui/material'
 import Navegacao from '../components/Navegacao'
 import CardLista from '../components/CardLista'
 import api from '../services/api'
 
 
 const MeusPlantoes = () => {
+  const [plantao, setPlantao] = useState([])
+  
   useEffect( () => {
     api.get('plantao/meus')
     .then(( { data } ) => {
       setPlantao(data.plantao)
-      console.log(data)
-      .catch((e) => {
-        alert(e)
-      })
     })
-  }, [])
+    .catch((e) => {
+      alert(e)
+    })
+  }, [plantao])
 
-  const [plantao, setPlantao] = useState([])
 
   return (
     <>
       <Navegacao/>
-      <Container sx={{ width: '100vw', height: '89vh', backgroundColor: 'white',
-      display:'flex', flexWrap:'wrap', flexDirection: 'column'
+      <Container sx={{ width: '100vw', height: '80vh', backgroundColor: 'white',
+      display:'flex', flexWrap:'wrap', flexDirection: 'column', mt:3
        }}><br />
         {
-          plantao.length !== 0 ? plantao.map( (dado) => (
+          plantao.length !== 0 ? plantao.map( (dado) => (            
             <CardLista 
-            plantonista={dado.plantonista} 
+            plantonista={0} 
             turno={dado.turno}
             observacao={dado.observacao}
             chave={dado.id}
