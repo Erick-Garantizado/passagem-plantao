@@ -8,6 +8,7 @@ router.post('/receber', PlantaoController.receber)
 router.get('/listar', PlantaoController.show)
 router.get('/meus', PlantaoController.showMy)
 router.get('/usuarioAtual', PlantaoController.currentUser)
+router.get('/detalhes/:id', PlantaoController.detalhes)
 
 router.get('/teste', PlantaoController.teste)
 
