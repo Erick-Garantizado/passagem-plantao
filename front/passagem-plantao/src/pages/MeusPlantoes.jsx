@@ -23,7 +23,7 @@ const MeusPlantoes = () => {
     <>
       <Navegacao/>
       <Container sx={{ width: '100vw', height: '80vh', backgroundColor: 'white',
-      display:'flex', flexWrap:'wrap', flexDirection: 'column', mt:3
+      display:'flex', flexWrap:'wrap', mt:3
        }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (            
