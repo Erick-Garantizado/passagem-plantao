@@ -47,7 +47,6 @@ module.exports = class PlantaoController {
                     id_pass: req.usuarioId
                 }
             })
-            console.log({plantao})
             res.json({ plantao })
         } catch (e) {
             res.status(500).json({
@@ -83,6 +82,20 @@ module.exports = class PlantaoController {
             res.status(500).json({
                 error: e.message
             })
+        }
+    }
+
+    static async detalhes(req, res) {
+        try {
+            const plantao = await plantaos.findOne({ 
+                where: {
+                    id: req.params.id
+                } 
+            })
+            
+            res.json({ plantao })
+        } catch(e) {
+            res.status(500).json({ error: e.message })
         }
     }
 
