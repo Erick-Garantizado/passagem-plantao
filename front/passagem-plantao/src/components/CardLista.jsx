@@ -1,14 +1,17 @@
 import React from 'react'
 import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 // import { LoadingButton } from '@mui/lab'
 // import api from '../services/api'
 
 
 const CardLista = (props) => {
   const data = new Date(props.data)
+  const navigate = useNavigate()
 
 	const handleReceber = () => {
-
+    navigate('/detalhes/' + props.chave)
+    
   //   api.post('/plantao/receber', {chave:props.chave})
   //   .then( ({ data }) => {
   //     setOpen(true)
