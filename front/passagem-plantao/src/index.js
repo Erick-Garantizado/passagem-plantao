@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Area from './pages/Area';
 import Passar from './pages/Passar';
 import Listar from './pages/Listar';
+import Detalhes from './pages/Detalhes';
 import MeusPlantoes from './pages/MeusPlantoes';
 
 
@@ -19,6 +20,7 @@ root.render(
         <Route path='/passagem' element={<Passar/>} />
         <Route path='/listagem' element={<Listar/>} />
         <Route path='/meusplantoes' element={<MeusPlantoes/>} />
+        <Route path='/detalhes/:id' element={<Detalhes/>} />
       </Routes>
     </BrowserRouter>
   </div>
