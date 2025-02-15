@@ -23,14 +23,14 @@ const Listar = () => {
     <>
       <Navegacao />
       <Container sx={{ width: '100vw', height: '93vh', backgroundColor: 'white',
-        display:'flex', flexWrap:'wrap', flexDirection: 'column'
+        display:'flex', flexWrap:'wrap', mt:3
        }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (
             <CardLista 
             plantonista={dado.plantonista} 
             turno={dado.turno}
-            observacao={dado.observacao}
+            data={dado.createdAt}
             chave={dado.id}
             />
           ))
