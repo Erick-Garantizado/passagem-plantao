@@ -15,6 +15,7 @@
 .container-geral {
     width: '100vw';
     height: '80vh';
-    background-Color: 'white';
     display:'flex';
+    flex-direction: row;
+    background-Color: 'black';
 }

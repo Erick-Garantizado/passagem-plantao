@@ -8,6 +8,7 @@ import Passar from './pages/Passar';
 import Listar from './pages/Listar';
 import Detalhes from './pages/Detalhes';
 import MeusPlantoes from './pages/MeusPlantoes';
+import Cadastro from './pages/Cadastro';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,7 @@ root.render(
         <Route path='/listagem' element={<Listar/>} />
         <Route path='/meusplantoes' element={<MeusPlantoes/>} />
         <Route path='/detalhes/:id' element={<Detalhes/>} />
+        <Route path='/cadastro' element={<Cadastro/>} />
       </Routes>
     </BrowserRouter>
   </div>
