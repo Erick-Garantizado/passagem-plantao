@@ -9,8 +9,12 @@ const CardLista = (props) => {
   const data = new Date(props.data)
   const navigate = useNavigate()
 
-	const handleReceber = () => {
+  const handleDetalhes =() => {
     navigate('/detalhes/' + props.chave)
+
+  }
+
+	const handleReceber = () => {
     
   //   api.post('/plantao/receber', {chave:props.chave})
   //   .then( ({ data }) => {
@@ -47,7 +51,7 @@ const CardLista = (props) => {
           </CardContent>
           <CardActions>
               <Button size="small" variant='contained' color='success' 
-              onClick={handleReceber}>Detalhes</Button>
+              onClick={handleDetalhes}>Detalhes</Button>
           </CardActions>
       </Card>
       <Backdrop

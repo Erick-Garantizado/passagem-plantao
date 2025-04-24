@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navegacao from '../components/Navegacao'
 import { Container, Typography } from '@mui/material'
 import api from '../services/api'
-import CardLista from '../components/CardLista'
+import CardListaReceber from '../components/CardListaReceber'
 
 const Listar = () => {
   
@@ -27,7 +27,7 @@ const Listar = () => {
        }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (
-            <CardLista 
+            <CardListaReceber 
             plantonista={dado.plantonista} 
             turno={dado.turno}
             data={dado.createdAt}
