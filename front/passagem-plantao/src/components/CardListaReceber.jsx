@@ -1,6 +1,12 @@
 import React from 'react'
-import { Backdrop, Button, Card, CardActions, 
-CardContent, CircularProgress, Typography,
+import { 
+Backdrop, 
+Button, 
+Card, 
+CardActions, 
+CardContent, 
+CircularProgress, 
+Typography,
 Dialog,
 DialogActions,
 DialogContent,
@@ -29,32 +35,22 @@ const CardListaReceber = (props) => {
     setOpenDialog(false)
   }
 
-  const handleOpenBackdrop = () => {
-    setOpenBackdrop(true)
-    setOpenDialog(false)
-  }
-
-  const handleCloseBackdrop = () => {
-    setOpenBackdrop(false)
-    setOpenDialog(false)
-  }
-
 	const handleReceber = () => {
-     api.post('/plantao/receber', {chave:props.chave})
-     .then( ({ data }) => {
-       setOpenBackdrop(true)
-       alert('recebido')
-       window.location.reload()
-     })
-     .catch( (e) => {
-       console.log(e)
-       setOpenBackdrop(false)
-       alert('erro')
-     })
-     .finally( () => {
-       setOpenBackdrop(false)
-     })
-  
+    setOpenBackdrop(true)
+    api.post('/plantao/receber', {chave:props.chave})
+    .then( ({ data }) => {
+     setOpenDialog(false)
+     setOpenBackdrop(false)      
+     window.location.reload()
+    })
+    .catch( (e) => {
+     console.log(e)
+     setOpenBackdrop(false)
+     alert('erro')
+    })
+    //.finally( () => {
+    // setOpenBackdrop(false)
+    //})
   }
 
   return (
@@ -96,7 +92,7 @@ const CardListaReceber = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Não</Button>
-          <Button onClick={handleOpenBackdrop} autoFocus>
+          <Button onClick={handleReceber} autoFocus>
             Sim
           </Button>
         </DialogActions>
