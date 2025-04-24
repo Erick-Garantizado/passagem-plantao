@@ -32,6 +32,7 @@ const MeusPlantoes = () => {
             turno={dado.turno}
             data={dado.createdAt}
             chave={dado.id}
+            descricao={dado.observacao}
             />
           )) 
           :
