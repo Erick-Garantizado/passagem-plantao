@@ -1,28 +1,8 @@
-// import { Box, Container, FormLabel, TextField } from '@mui/material'
-// import React from 'react'
-// import "./Area.css"
-// import { FormControl } from '@mui/base'
-
-
-// const Cadastro = () => {
-//   return (
-//     <Container sx={{ width:'100vw', height:'89vh', backgroundColor: 'white', mt:3,
-//         display:'flex', flexDirection:'column', alignItems: 'center', boxShadow:10 }}>
-//       <Box>
-//         <FormLabel></FormLabel>
-//         <FormControl>
-//           <TextField id="nome" label="Nome" variant="standard" />
-//           <TextField id="setor" label="Setor" variant="standard" />
-//           <TextField id="matricula" label="Matricula" variant="standard" />
-//         </FormControl>
-//       </Box>
-//     </Container>
-//   )
-// }
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import api from "../services/api";
 import { 
   TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, 
   Checkbox, Select, MenuItem, Button, FormHelperText 
@@ -46,12 +26,15 @@ const Cadastro = () => {
   });
 
   const onSubmit = (data) => {
-    console.log("Dados do formulário:", data);
-    alert("Formulário enviado com sucesso!");
+    api.post('/create')
+    // nome
+    // funcao
+    // matricula
+    // email
   };
 
   const handleClick = () => {
-    alert('enviado')
+    api('enviado')
   }
 
   return (
@@ -72,6 +55,16 @@ const Cadastro = () => {
         control={control}
         render={({ field }) => (
           <TextField {...field} label="E-mail" fullWidth variant="standard"
+          margin="normal" error={!!errors.email} helperText={errors.email?.message} />
+        )}
+      />
+      
+      {/* Matricula */}
+      <Controller
+        name="matricula"
+        control={control}
+        render={({ field }) => (
+          <TextField {...field} label="Matricula" fullWidth variant="standard"
           margin="normal" error={!!errors.email} helperText={errors.email?.message} />
         )}
       />
@@ -110,22 +103,22 @@ const Cadastro = () => {
       </FormControl> */}
 
       {/* País (Select) */}
-      {/* <FormControl variant="standard" fullWidth margin="normal" error={!!errors.pais}>
-        <FormLabel>País</FormLabel>
+      <FormControl variant="standard" fullWidth margin="normal" error={!!errors.pais}>
+        <FormLabel>Profissão</FormLabel>
         <Controller
-          name="pais"
+          name="profissao"
           control={control}
           render={({ field }) => (
             <Select {...field} displayEmpty>
-              <MenuItem value="">Selecione um país</MenuItem>
-              <MenuItem value="brasil">Brasil</MenuItem>
-              <MenuItem value="portugal">Portugal</MenuItem>
-              <MenuItem value="eua">Estados Unidos</MenuItem>
+              <MenuItem value="">Selecione uma profissão</MenuItem>
+              <MenuItem value="medico">Médico</MenuItem>
+              <MenuItem value="enfermeiro">Enfermeiro</MenuItem>
+              <MenuItem value="tec_enfermagem">Técnico em enfermagem</MenuItem>
             </Select>
           )}
         />
         <FormHelperText>{errors.pais?.message}</FormHelperText>
-      </FormControl> */}
+      </FormControl>
 
       {/* Botão de Envio */}
       <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}      >
