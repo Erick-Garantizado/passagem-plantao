@@ -38,7 +38,7 @@ const Listar = () => {
           (
             <>
               <Typography variant='h4'>
-                Sem registro de plantao a ser recebido
+                Sem registro de plantão a ser recebido
               </Typography>
             </>
           )
