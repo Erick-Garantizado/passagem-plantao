@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.usuarios, {
         as: 'plantonista',
-        foreignKey: 'mat_pass'
+        foreignKey: 'id_pass'
       })
     }
   }
   plantaos.init({
     turno: DataTypes.CHAR,
-    mat_pass: DataTypes.INTEGER,
-    mat_receb: DataTypes.INTEGER,
+    id_pass: DataTypes.INTEGER,
+    id_receb: DataTypes.INTEGER,
     situacao: DataTypes.BOOLEAN,
     observacao: DataTypes.STRING
   }, {

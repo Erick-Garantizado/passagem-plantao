@@ -2,6 +2,21 @@ const { usuarios } = require('../models')
 const jwt = require('jsonwebtoken')
 
 module.exports = class LoginController {
+
+    static async create(req, res) {
+        try {
+            const usuario = await usuarios.create({
+                nome: req.body.nome,
+                funcao: req.body.funcao,
+                matricula: req.body.matricula,
+                email: req.body.email
+            })
+        } catch (e) {
+            res.status(500).json({
+                error: e.message
+            })
+        }
+    }
     
     static async login(req, res) {
         try {

@@ -11,12 +11,14 @@ module.exports = {
       nome: 'Teste',
       funcao: 'Tester',
       matricula: 1000,
+      email: 'teste@email.com',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
       nome: 'Erick',
       funcao: 'Assistente de TI',
       matricula: 2129,
+      email: 'erick@email.com',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

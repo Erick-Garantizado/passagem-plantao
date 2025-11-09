@@ -1,62 +1,87 @@
-import React, { useState } from 'react'
-import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography } from '@mui/material'
-import { LoadingButton } from '@mui/lab'
-import api from '../services/api'
+import React from 'react'
+import { 
+Backdrop, 
+Button, 
+Card, 
+CardActions, 
+CardContent, 
+CircularProgress, 
+Typography,
+Dialog,
+DialogActions,
+DialogContent,
+DialogContentText,
+DialogTitle } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+// import { LoadingButton } from '@mui/lab'
+// import api from '../services/api'
 
 
 const CardLista = (props) => {
-  const [open, setOpen] = useState(false)
-  // const handleClose = () => { setOpen(false) }
-  // const handleOpen = () => { setOpen(true) }
+  const data = new Date(props.data)
+  const navigate = useNavigate()
+  const [open, setOpen] = React.useState(false)
 
-	const handleReceber = () => {
-    api.post('/plantao/receber', {chave:props.chave})
-    .then( ({ data }) => {
-
-      setOpen(true)
-      alert('recebido')
-      window.location.reload()
-    })
-    .catch( (e) => {
-      console.log(e)
-      setOpen(false)
-      alert('erro')
-    })
-    .finally( () => {
-      setOpen(false)
-    })
+  const handleClose = () => {
+    setOpen(false)
   }
+
+  const handleDetalhes =() => {
+    //navigate('/detalhes/' + props.chave)
+    setOpen(true)
+  }
+
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
 
   return (
     <>
-      <Card sx={{ minWidth: 275, mb: 3 }} key={props.chave}>
+      <Card sx={{ maxWidth: 345, minWidth: 275, mb: 3 }} key={props.chave}>
           <CardContent>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {/** plantonista */}
               Plantonista: {props.plantonista.nome}
               </Typography>
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              {/** turno */}
               Turno: {props.turno}
-              </Typography><hr />
+              </Typography>
               <Typography variant="body2">
-              {/** observação */}
-              Observação: <br />
-              {props.observacao}
+                Data: {data.toLocaleDateString("pt-BR")}
               </Typography>
           </CardContent>
           <CardActions>
               <Button size="small" variant='contained' color='success' 
-              onClick={handleReceber}>Receber plantão</Button>
+              onClick={handleDetalhes}>Detalhes</Button>
           </CardActions>
       </Card>
-      <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={open}
-          // onClick={handleClose}
-        >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll='paper'
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title">{props.turno} | {data.toLocaleDateString("pt-BR")}</DialogTitle>
+        <DialogContent >
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            //tabIndex={-1}
+          >
+            {props.descricao}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Fechar</Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }
