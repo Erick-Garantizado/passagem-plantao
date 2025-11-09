@@ -30,7 +30,7 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example: */
-     await queryInterface.bulkDelete('usuarios', null, {});
+    await queryInterface.bulkDelete('usuarios', null, {});
     
   }
 };
