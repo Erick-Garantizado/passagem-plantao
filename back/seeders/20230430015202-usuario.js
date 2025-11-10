@@ -12,6 +12,8 @@ module.exports = {
       funcao: 'Tester',
       matricula: 1000,
       email: 'teste@email.com',
+      permissao: 1,
+      ativo: false,
       createdAt: new Date(),
       updatedAt: new Date()
     },{
@@ -19,6 +21,8 @@ module.exports = {
       funcao: 'Assistente de TI',
       matricula: 2129,
       email: 'erick@email.com',
+      permissao: 0,
+      ativo: true,
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
