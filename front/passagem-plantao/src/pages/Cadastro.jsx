@@ -1,10 +1,9 @@
-import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../services/api";
 import { TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, 
-  Checkbox, Select, MenuItem, Button, FormHelperText } from "@mui/material";
+  Select, MenuItem, Button, FormHelperText } from "@mui/material";
 import Navegacao from "../components/Navegacao";
 
 // Esquema de validação com Yup

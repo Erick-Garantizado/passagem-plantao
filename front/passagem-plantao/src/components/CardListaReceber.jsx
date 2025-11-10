@@ -1,17 +1,6 @@
 import React from 'react'
-import { 
-Backdrop, 
-Button, 
-Card, 
-CardActions, 
-CardContent, 
-CircularProgress, 
-Typography,
-Dialog,
-DialogActions,
-DialogContent,
-DialogContentText,
-DialogTitle } from '@mui/material'
+import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography, 
+  Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 // import { LoadingButton } from '@mui/lab'
 import api from '../services/api'
@@ -39,14 +28,14 @@ const CardListaReceber = (props) => {
     setOpenBackdrop(true)
     api.post('/plantao/receber', {chave:props.chave})
     .then( ({ data }) => {
-     setOpenDialog(false)
-     setOpenBackdrop(false)      
-     window.location.reload()
+    setOpenDialog(false)
+    setOpenBackdrop(false)      
+    window.location.reload()
     })
     .catch( (e) => {
-     console.log(e)
-     setOpenBackdrop(false)
-     alert('erro')
+    console.log(e)
+    setOpenBackdrop(false)
+    alert('erro')
     })
     //.finally( () => {
     // setOpenBackdrop(false)
