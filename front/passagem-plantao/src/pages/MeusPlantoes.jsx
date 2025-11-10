@@ -16,17 +16,17 @@ const MeusPlantoes = () => {
     .catch((e) => {
       alert(e)
     })
-  }, [plantao])
+  }, [])
 
 
   return (
     <>
       <Navegacao/>
-      <Container sx={{ width: '100vw', height: '80vh', backgroundColor: 'white',
+      <Container sx={{ width: '100vw', backgroundColor: 'white',
       display:'flex', flexWrap:'wrap', mt:3
-       }}><br />
+      }}><br />
         {
-          plantao.length !== 0 ? plantao.map( (dado) => (            
+          plantao.length !== 0 ? plantao.map( (dado) => (      
             <CardLista 
             plantonista={0} 
             turno={dado.turno}
