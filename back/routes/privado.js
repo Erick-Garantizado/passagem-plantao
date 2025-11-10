@@ -8,10 +8,10 @@ router.post('/salvar', PlantaoController.store)
 router.post('/receber', PlantaoController.receber)
 router.get('/listar', PlantaoController.show)
 router.get('/meus', PlantaoController.showMy)
-router.get('/usuarioAtual', PlantaoController.currentUser)
+router.get('/usuario/atual', PlantaoController.currentUser)
 router.get('/detalhes/:id', PlantaoController.detalhes)
 
-router.post('/criarUsuario', LoginController.create)
+router.post('/usuario/criar', LoginController.create)
 
 router.get('/teste', PlantaoController.teste)
 
