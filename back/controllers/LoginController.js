@@ -9,8 +9,12 @@ module.exports = class LoginController {
                 nome: req.body.nome,
                 funcao: req.body.funcao,
                 matricula: req.body.matricula,
-                email: req.body.email
+                email: req.body.email,
+                permissao: req.body.permissao,
+                ativo: req.body.ativo
             })
+
+            res.json({ usuario })
         } catch (e) {
             res.status(500).json({
                 error: e.message
