@@ -10,16 +10,28 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       funcao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       matricula: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       email: {
+        allowNull: false,
         type: Sequelize.STRING
+      },
+      permissao: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      ativo: {
+        type: Sequelize.STRING,
+        defaultValue: true
       },
       createdAt: {
         allowNull: false,
