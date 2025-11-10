@@ -2,7 +2,7 @@ import { AppBar, Avatar, Box, Container, IconButton, Menu, MenuItem, Toolbar, To
 import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { AccountCircle } from '@mui/icons-material';
@@ -11,15 +11,19 @@ import { AccountCircle } from '@mui/icons-material';
 const Navegacao = () => {
 
   useEffect(() => {
-    api.get('plantao/usuarioAtual')
-    .then( ( {data} ) => { setUsuarioAtual(data.usuario.nome) })
+    api.get('plantao/usuario/atual')
+    .then( ( {data} ) => {
+      setUsuarioAtual(data.usuario.nome)
+      setPermissao(data.usuario.permissao)
+    })
     .catch((e) => {
       alert(e)
     })
   }, [])
   
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [permissao, setPermissao] = useState();
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
   const [usuarioAtual, setUsuarioAtual] = useState()
   const navigate = useNavigate()
 
@@ -56,6 +60,11 @@ const Navegacao = () => {
   const handlePerfil = () => {
     handleCloseNavMenu()
     navigate('/perfil')
+  }
+  
+  const handleCadastro = () => {
+    handleCloseNavMenu()
+    navigate('/cadastro')
   }
 
   const handleSair = () => {
@@ -153,6 +162,11 @@ const Navegacao = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             > 
+              {permissao === 0 && (
+                <MenuItem onClick={handleCadastro}>
+                  <Typography sx={{ textAlign: 'center' }}>Cadastrar usuário</Typography>
+                </MenuItem>
+              )}
               <MenuItem onClick={handlePerfil}>
                 <Typography sx={{ textAlign: 'center' }}>Perfil</Typography>
               </MenuItem>
