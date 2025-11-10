@@ -22,9 +22,9 @@ const Listar = () => {
   return (
     <>
       <Navegacao />
-      <Container sx={{ width: '100vw', height: '93vh', backgroundColor: 'white',
+      <Container sx={{ width: '100vw', backgroundColor: 'white',
         display:'flex', flexWrap:'wrap', mt:3
-       }}><br />
+      }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (
             <CardListaReceber 
