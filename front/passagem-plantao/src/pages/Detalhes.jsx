@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { Container, Typography, Button } from '@mui/material'
 import { useParams } from 'react-router-dom';
 import api from '../services/api'
+import PdfButton from '../components/PdfButton';
+
 
 
 const Detalhes = () => {
@@ -34,7 +36,7 @@ const Detalhes = () => {
             ( <Button variant="contained" color="success">OK</Button> )
           } 
         </Typography>
-
+        <PdfButton/>
       </Container>
     </>
   )
