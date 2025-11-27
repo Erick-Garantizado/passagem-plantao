@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography, 
   Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -9,26 +9,45 @@ import api from '../services/api'
 const CardListaReceber = (props) => {
   const data = new Date(props.data)
   const navigate = useNavigate()
-  const [openDialog, setOpenDialog] = React.useState(false)
-  const [openBackdrop, setOpenBackdrop] = React.useState(false)
+  const [openDialogReceber, setOpenDialogReceber] = useState(false)
+  const [openDialogDetalhes, setOpenDialogDetalhes] = useState(false)
+  const [openBackdrop, setOpenBackdrop] = useState(false)
 
   const handleDetalhes =() => {
     navigate('/detalhes/' + props.chave)
   }
 
-  const handleOpenDialog = () => {
-    setOpenDialog(true)
+  const handleOpenDialogDetalhes = () => {
+    setOpenDialogDetalhes(true)
   }
 
-  const handleCloseDialog = () => {
-    setOpenDialog(false)
+  const handleCloseDialogDetalhes = () => {
+    setOpenDialogDetalhes(false)
   }
+
+  const handleOpenDialogReceber = () => {
+    setOpenDialogReceber(true)
+  }
+
+  const handleCloseDialogReceber = () => {
+    setOpenDialogReceber(false)
+  }
+
+  const descriptionElementRef = useRef(null);
+  useEffect(() => {
+    if (openDialogReceber) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [openDialogReceber]);
 
 	const handleReceber = () => {
     setOpenBackdrop(true)
     api.post('/plantao/receber', {chave:props.chave})
     .then( ({ data }) => {
-    setOpenDialog(false)
+    setOpenDialogReceber(false)
     setOpenBackdrop(false)      
     window.location.reload()
     })
@@ -60,14 +79,15 @@ const CardListaReceber = (props) => {
           </CardContent>
           <CardActions>
               <Button size="small" variant='contained' color='warning' 
-              onClick={handleDetalhes}>Detalhes</Button>
+              onClick={handleOpenDialogDetalhes}>Detalhes</Button>
               <Button size="small" variant='contained' color='success'
-              onClick={handleOpenDialog} >Receber</Button>
+              onClick={handleOpenDialogReceber} >Receber</Button>
           </CardActions>
       </Card>
+      {/* Dialogo de receber o plantao */}
       <Dialog
-        open={openDialog}
-        onClose={handleCloseDialog}
+        open={openDialogReceber}
+        onClose={handleCloseDialogReceber}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -80,10 +100,31 @@ const CardListaReceber = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Não</Button>
-          <Button onClick={handleReceber} autoFocus>
-            Sim
-          </Button>
+          <Button onClick={handleCloseDialogReceber}> Não </Button>
+          <Button onClick={handleReceber} autoFocus> Sim </Button>
+        </DialogActions>
+      </Dialog>
+      {/* detalhes */}
+      <Dialog
+        open={openDialogDetalhes}
+        onClose={handleOpenDialogDetalhes}
+        scroll='paper'
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <DialogTitle id="scroll-dialog-title"> Turno: {props.turno.toUpperCase()} <br/> Data: {data.toLocaleDateString("pt-BR")}</DialogTitle>
+        <DialogContent >
+          <DialogContentText
+            id="scroll-dialog-description"
+            ref={descriptionElementRef}
+            //tabIndex={-1}
+          >
+            {props.descricao}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <PdfButton/> */}
+          <Button onClick={handleCloseDialogDetalhes}>Fechar</Button>
         </DialogActions>
       </Dialog>
       <Backdrop
