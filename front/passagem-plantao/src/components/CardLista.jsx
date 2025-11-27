@@ -1,18 +1,9 @@
 import React from 'react'
-import { 
-Backdrop, 
-Button, 
-Card, 
-CardActions, 
-CardContent, 
-CircularProgress, 
-Typography,
-Dialog,
-DialogActions,
-DialogContent,
-DialogContentText,
-DialogTitle } from '@mui/material'
+import { Backdrop, Button, Card, CardActions, CardContent, 
+  CircularProgress, Typography, Dialog, DialogActions, DialogContent, 
+  DialogContentText, DialogTitle } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import PdfButton from './PdfButton'
 // import { LoadingButton } from '@mui/lab'
 // import api from '../services/api'
 
@@ -68,7 +59,7 @@ const CardLista = (props) => {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">{props.turno} | {data.toLocaleDateString("pt-BR")}</DialogTitle>
+        <DialogTitle id="scroll-dialog-title"> Turno: {props.turno.toUpperCase()} <br/> Data: {data.toLocaleDateString("pt-BR")}</DialogTitle>
         <DialogContent >
           <DialogContentText
             id="scroll-dialog-description"
@@ -79,6 +70,7 @@ const CardLista = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          <PdfButton/>
           <Button onClick={handleClose}>Fechar</Button>
         </DialogActions>
       </Dialog>
