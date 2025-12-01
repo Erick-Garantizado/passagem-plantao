@@ -65,7 +65,7 @@ const CardLista = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <PdfButton/>
+          <PdfButton id={props.chave}/>
           <Button onClick={handleClose}>Fechar</Button>
         </DialogActions>
       </Dialog>
