@@ -23,7 +23,7 @@ const Passar = () => {
         
         api.post('/plantao/salvar', {
             turno : turno.trim(),
-            observacao: observacao.trim()
+            observacao: observacao
         }).then(({data}) => {
             setSucesso(true)
             setTimeout(() => {
@@ -49,7 +49,7 @@ const Passar = () => {
           <Navegacao />
           <Container sx={{ width:'100vw', height:'89vh', backgroundColor: 'white', 
             display:'flex', flexDirection:'column', alignItems: 'center', boxShadow:10
-           }} >
+          }} >
             <Snackbar open={sucesso} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                 <Alert severity='success' sx={{ width: '100%' }}>
                     Dados salvos!
