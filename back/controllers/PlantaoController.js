@@ -87,12 +87,7 @@ module.exports = class PlantaoController {
 
     static async detalhes(req, res) {
         try {
-            const plantao = await plantaos.findOne({ 
-                where: {
-                    id: req.params.id
-                } 
-            })
-            
+            const plantao = await plantaos.findByPk(req.body.chave)
             res.json({ plantao })
         } catch(e) {
             res.status(500).json({ error: e.message })
