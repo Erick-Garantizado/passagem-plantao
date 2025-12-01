@@ -87,7 +87,21 @@ module.exports = class PlantaoController {
 
     static async detalhes(req, res) {
         try {
-            const plantao = await plantaos.findByPk(req.body.chave)
+            const plantao = await plantaos.findOne({
+                where: { id: req.body.chave },
+                include: [
+                    {
+                        model: usuarios,
+                        as: 'plantonista',
+                        attributes: ['id','nome','funcao','matricula','email','permissao','ativo','createdAt','updatedAt']
+                    },
+                    {
+                        model: usuarios,
+                        as: 'recebedor',
+                        attributes: ['id','nome','funcao','matricula','email','permissao','ativo','createdAt','updatedAt']
+                    }
+                ]
+            })
             res.json({ plantao })
         } catch(e) {
             res.status(500).json({ error: e.message })
