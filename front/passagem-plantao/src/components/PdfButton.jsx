@@ -8,12 +8,13 @@ const PdfButton = ({ id }) => {
 
   const handleCLick = () => {
     api.post('plantao/detalhes', {chave:id})
-    .then( ({ dados })=>{ gerarPDF(dados.plantao) })
+    .then( ({ data })=>{ gerarPDF(data.plantao) })
+    // .then( ({ data })=>{ console.log(data.plantao) })
     .catch((e)=>{ console.log(e) })
   }
   return (    
     <LoadingButton onClick={handleCLick} variant="contained">
-        Gerar PDF
+      Gerar PDF
     </LoadingButton>
   );
 };
