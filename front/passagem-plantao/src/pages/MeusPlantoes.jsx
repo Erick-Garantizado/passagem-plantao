@@ -27,8 +27,7 @@ const MeusPlantoes = () => {
       }}><br />
         {
           plantao.length !== 0 ? plantao.map( (dado) => (      
-            <CardLista 
-            plantonista={0} 
+            <CardLista
             turno={dado.turno}
             data={dado.createdAt}
             chave={dado.id}
