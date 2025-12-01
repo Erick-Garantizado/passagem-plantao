@@ -1,23 +1,18 @@
 import { useState, useRef, useEffect } from 'react'
 import { Backdrop, Button, Card, CardActions, CardContent, CircularProgress, Typography, 
   Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
 // import { LoadingButton } from '@mui/lab'
 import api from '../services/api'
+import PdfButton from './PdfButton'
 
 
 const CardListaReceber = (props) => {
   const data = new Date(props.data)
-  const navigate = useNavigate()
   const [openDialogReceber, setOpenDialogReceber] = useState(false)
   const [openDialogDetalhes, setOpenDialogDetalhes] = useState(false)
   const [openBackdrop, setOpenBackdrop] = useState(false)
 
-  const handleDetalhes =() => {
-    navigate('/detalhes/' + props.chave)
-  }
-
-  const handleOpenDialogDetalhes = () => {
+    const handleOpenDialogDetalhes = () => {
     setOpenDialogDetalhes(true)
   }
 
@@ -123,7 +118,7 @@ const CardListaReceber = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <PdfButton/> */}
+          <PdfButton id={props.chave}/>
           <Button onClick={handleCloseDialogDetalhes}>Fechar</Button>
         </DialogActions>
       </Dialog>
