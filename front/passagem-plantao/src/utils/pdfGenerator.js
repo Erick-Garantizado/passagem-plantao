@@ -1,25 +1,24 @@
 import pdfMake from './pdfConfig'
 
 
-export const gerarPDF = () => {
+export const gerarPDF = (dados) => {
     const docDefinition = {
         content: [
-            { text: "Relatório de Vendas", style: "header" },
-            { text: `Data: ${new Date().toLocaleDateString()}`, style: "subheader" },
+            { text: "Teste do doc de passagem de plantão", style: "header" },
+            { text: `Data de hoje: ${new Date().toLocaleDateString()}`, style: "subheader" },
+            { text: `Data do plantão: ${new Date(dados.data).toLocaleDateString('pt-BR')}`, style: "subheader" },
             { text: "-------------------------------------" },
-            { text: "Itens vendidos:" },
-            {
-                table: {
-                widths: ["*", "*", "*"],
-                body: [
-                    ["Produto", "Quantidade", "Preço"],
-                    ["Caneta", "10", "R$ 5,00"],
-                    ["Caderno", "5", "R$ 15,00"],
-                    ["Mochila", "2", "R$ 120,00"],
-                ],
-                },
-            },
+            { text: `Turno: ${dados.turno.toUpperCase()}`},
+            { text: "Descrição:"},
+            { text: dados.descricao}
         ],
+        footer: {
+            columns: [
+                { text: "___________________________\nGestor", alignment: "center" },
+                { text: "___________________________\nPlant. recptor", alignment: "center" },
+                { text: "___________________________\nPlant. do dia ", alignment: "center" },
+            ],
+        },
         styles: {
             header: { fontSize: 18, bold: true },
             subheader: { fontSize: 12, italics: true },
