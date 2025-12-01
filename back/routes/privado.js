@@ -9,7 +9,7 @@ router.post('/receber', PlantaoController.receber)
 router.get('/listar', PlantaoController.show)
 router.get('/meus', PlantaoController.showMy)
 router.get('/usuario/atual', PlantaoController.currentUser)
-router.get('/detalhes/:id', PlantaoController.detalhes)
+router.post('/detalhes', PlantaoController.detalhes)
 
 router.post('/usuario/criar', LoginController.create)
 
