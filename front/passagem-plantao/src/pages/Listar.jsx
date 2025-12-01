@@ -31,6 +31,7 @@ const Listar = () => {
             plantonista={dado.plantonista} 
             turno={dado.turno}
             data={dado.createdAt}
+            descricao={dado.observacao}
             chave={dado.id}
             />
           ))
