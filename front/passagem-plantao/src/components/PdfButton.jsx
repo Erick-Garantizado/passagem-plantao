@@ -1,25 +1,20 @@
 import { Button } from "@mui/material";
+import { LoadingButton } from '@mui/lab'
 import { gerarPDF } from "../utils/pdfGenerator";
+import api from "../services/api";
 
 
-const PdfButton = () => {
-  return (
-    // <button
-    //   onClick={gerarPDF}
-    //   style={{
-    //     padding: "10px 20px",
-    //     backgroundColor: "#007bff",
-    //     color: "white",
-    //     border: "none",
-    //     borderRadius: "5px",
-    //     cursor: "pointer",
-    //   }}
-    // >
-    //   Gerar PDF
-    // </button>
-    <Button onClick={gerarPDF} variant="contained">
+const PdfButton = ({ id }) => {
+
+  const handleCLick = () => {
+    api.post('plantao/detalhes', {chave:id})
+    .then( ({ dados })=>{ gerarPDF(dados.plantao) })
+    .catch((e)=>{ console.log(e) })
+  }
+  return (    
+    <LoadingButton onClick={handleCLick} variant="contained">
         Gerar PDF
-    </Button>
+    </LoadingButton>
   );
 };
 
