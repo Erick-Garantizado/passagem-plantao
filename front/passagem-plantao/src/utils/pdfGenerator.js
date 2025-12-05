@@ -2,18 +2,6 @@ import pdfMake from './pdfConfig'
 
 
 export const gerarPDF = (dados) => {
-    const linha = {
-                canvas: [
-                    {
-                    type: 'line',
-                    x1: 0, y1: 0,
-                    x2: 520, y2: 0,
-                    lineWidth: 1
-                    }
-                ],
-                margin: [0, 10, 0, 10] 
-            }
-
     const docDefinition = {
         content: [
             { text: "Teste do doc de passagem de plantão", style: "header", alignment: "center" },

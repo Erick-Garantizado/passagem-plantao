@@ -15,13 +15,11 @@ const Detalhes = () => {
     api.get('plantao/detalhes/' + id)
     .then(({ data }) => {
       setPlantao(data.plantao)
-      console.log(data.plantao.situacao)
     })
     .catch((e) => {
       alert(e)
     })
-    
-  } , [])
+  } , [id])
   return (
     <>
       <Container sx={{ width: '100vw', height: '100vh' }} >

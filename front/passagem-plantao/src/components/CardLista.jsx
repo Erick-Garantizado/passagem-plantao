@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { Backdrop, Button, Card, CardActions, CardContent, 
-  CircularProgress, Typography, Dialog, DialogActions, DialogContent, 
+import { Button, Card, CardActions, CardContent, 
+  Typography, Dialog, DialogActions, DialogContent, 
   DialogContentText, DialogTitle } from '@mui/material'
 import PdfButton from './PdfButton'
-// import api from '../services/api'
 
 
 const CardLista = (props) => {

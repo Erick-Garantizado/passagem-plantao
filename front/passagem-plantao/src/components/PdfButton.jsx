@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { LoadingButton } from '@mui/lab'
 import { gerarPDF } from "../utils/pdfGenerator";
 import api from "../services/api";
