@@ -9,6 +9,8 @@ import Listar from './pages/Listar';
 import Detalhes from './pages/Detalhes';
 import MeusPlantoes from './pages/MeusPlantoes';
 import Cadastro from './pages/Cadastro';
+import ProtectedRoute from './routes/ProtectedRoute';
+import Erro from './pages/Erro';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,12 +19,13 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>} />
-        <Route path='/area' element={<Area/>} />
-        <Route path='/passagem' element={<Passar/>} />
-        <Route path='/listagem' element={<Listar/>} />
-        <Route path='/meusplantoes' element={<MeusPlantoes/>} />
-        <Route path='/detalhes/:id' element={<Detalhes/>} />
-        <Route path='/cadastro' element={<Cadastro/>} />
+        <Route path='/area' element={<ProtectedRoute><Area/></ProtectedRoute>} />
+        <Route path='/passagem' element={<ProtectedRoute><Passar/></ProtectedRoute>} />
+        <Route path='/listagem' element={<ProtectedRoute><Listar/></ProtectedRoute>} />
+        <Route path='/meusplantoes' element={<ProtectedRoute><MeusPlantoes/></ProtectedRoute>} />
+        <Route path='/detalhes/:id' element={<ProtectedRoute><Detalhes/></ProtectedRoute>} />
+        <Route path='/cadastro' element={<ProtectedRoute><Cadastro/></ProtectedRoute>} />
+        <Route path='/erro' element={<Erro/>} />
       </Routes>
     </BrowserRouter>
   </div>
