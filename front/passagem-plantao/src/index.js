@@ -11,22 +11,25 @@ import MeusPlantoes from './pages/MeusPlantoes';
 import Cadastro from './pages/Cadastro';
 import ProtectedRoute from './routes/ProtectedRoute';
 import Erro from './pages/Erro';
+import { AuthProvider } from './context/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div className='back-ground'>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path='/area' element={<ProtectedRoute><Area/></ProtectedRoute>} />
-        <Route path='/passagem' element={<ProtectedRoute><Passar/></ProtectedRoute>} />
-        <Route path='/listagem' element={<ProtectedRoute><Listar/></ProtectedRoute>} />
-        <Route path='/meusplantoes' element={<ProtectedRoute><MeusPlantoes/></ProtectedRoute>} />
-        <Route path='/detalhes/:id' element={<ProtectedRoute><Detalhes/></ProtectedRoute>} />
-        <Route path='/cadastro' element={<ProtectedRoute><Cadastro/></ProtectedRoute>} />
-        <Route path='/erro' element={<Erro/>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Login/>} />
+          <Route path='/area' element={<><Area/></>} />
+          <Route path='/passagem' element={<ProtectedRoute><Passar/></ProtectedRoute>} />
+          <Route path='/listagem' element={<ProtectedRoute><Listar/></ProtectedRoute>} />
+          <Route path='/meusplantoes' element={<ProtectedRoute><MeusPlantoes/></ProtectedRoute>} />
+          <Route path='/detalhes/:id' element={<ProtectedRoute><Detalhes/></ProtectedRoute>} />
+          <Route path='/cadastro' element={<ProtectedRoute><Cadastro/></ProtectedRoute>} />
+          <Route path='/erro' element={<Erro/>} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   </div>
 );
