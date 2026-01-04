@@ -1,5 +1,5 @@
 import { Alert, Card, Container, Snackbar, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import Logo from './suporte_TI-1.png'
 import { LoadingButton } from '@mui/lab'
 import api from '../services/api'
@@ -32,6 +32,10 @@ const Login = () => {
       }, 2000)
     })
   }
+
+  useEffect( () => {
+    if (localStorage.getItem('user-token')) return navigate('/area')
+  }, [])
 
   return (
     <>
