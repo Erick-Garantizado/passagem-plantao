@@ -1,10 +1,13 @@
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function ProtectedRoute({ children }) {
-  const autenticado = localStorage.getItem("auth");
+  const { user, loading } = useAuth();
 
-  if (!autenticado) {
-    return <Navigate to="/erro" />; // página de erro
+  if (loading) return <p>Carregando...</p>;
+
+  if (!user || user.ativo === false) {
+    return <Navigate to="/erro" />;
   }
 
   return children;
