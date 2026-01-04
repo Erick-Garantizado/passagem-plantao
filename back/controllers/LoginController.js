@@ -33,7 +33,13 @@ module.exports = class LoginController {
             
             // Caso exista o usuário
             if (usuario) {
-                const token = await jwt.sign(usuario.id, process.env.JWT_KEY)
+                const token = await jwt.sign({
+                    sub: usuario.id,
+                    admin: usuario.permissao
+                }, 
+                process.env.JWT_KEY,
+                {expiresIn: "1h"}
+            )
                 res.json({token:token})
 
             // Caso não exista
