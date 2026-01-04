@@ -5,7 +5,7 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.create({
                 turno: req.body.turno,
-                id_pass: req.usuarioId,
+                id_pass: req.usuarioId.sub,
                 situacao: false,
                 observacao: req.body.observacao
             })
@@ -44,7 +44,7 @@ module.exports = class PlantaoController {
         try {
             const plantao = await plantaos.findAll({
                 where: {
-                    id_pass: req.usuarioId
+                    id_pass: req.usuarioId.sub
                 }
             })
             res.json({ plantao })
@@ -59,7 +59,7 @@ module.exports = class PlantaoController {
         try {
             const num = req.body.chave
             const plantao = await plantaos.findByPk(num)
-            plantao.id_receb = Number(req.usuarioId)
+            plantao.id_receb = Number(req.usuarioId.sub)
             plantao.situacao = true
             const resp = await plantao.save()
             res.json(plantao)
@@ -74,7 +74,7 @@ module.exports = class PlantaoController {
         try {
             const usuario = await usuarios.findOne({
                 where: {
-                    id: req.usuarioId
+                    id: req.usuarioId.sub
                 }
             })
             res.json({ usuario })
