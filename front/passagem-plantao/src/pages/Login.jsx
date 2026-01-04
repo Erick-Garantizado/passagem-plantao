@@ -19,17 +19,14 @@ const Login = () => {
       matricula:matricula
     })
     .then(({data}) => {
-      // redirecionar para area de passagem de plantao
       localStorage.setItem('user-token', data.token)
       navigate('/area')
     })
     .catch((e) => {
-      // Popup dizendo que nao foi encontrado ninguem com a matricula informada
       setError(e.response.data.error)
       setOpen(true)
     })
     .finally(() => {
-      setLoading(false)
       setTimeout(() => {
         setOpen(false)
       }, 2000)
