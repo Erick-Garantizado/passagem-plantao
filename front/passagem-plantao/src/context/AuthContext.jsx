@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        // tenta buscar o usuário atual (token no localStorage)
         const { data } = await api.get("plantao/usuario/atual");
         setUser(data.usuario);
       } catch {
