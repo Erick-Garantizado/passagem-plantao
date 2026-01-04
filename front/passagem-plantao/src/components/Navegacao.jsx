@@ -10,15 +10,23 @@ import { AccountCircle } from '@mui/icons-material';
 const Navegacao = () => {
 
   useEffect(() => {
+    const token = localStorage.getItem('user-token');
+    console.log(token)
+    if (!token) {
+      setUsuarioAtual('');
+      setPermissao(null);
+      return;
+    }
     api.get('plantao/usuario/atual')
     .then( ( {data} ) => {
       setUsuarioAtual(data.usuario.nome)
       setPermissao(data.usuario.permissao)
     })
     .catch((e) => {
-      alert(e)
+      setUsuarioAtual(null);
+      setPermissao(null);
     })
-  }, [])
+  }, [localStorage.getItem('user-token')])
   
   const [permissao, setPermissao] = useState();
   const [anchorElNav, setAnchorElNav] = useState(null);
