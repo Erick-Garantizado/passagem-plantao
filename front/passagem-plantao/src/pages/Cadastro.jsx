@@ -40,7 +40,7 @@ const Cadastro = () => {
       funcao: data.profissao
     })
     .then(()=>{alert("Usuario criado!")})
-    .catch((e)=>{console.log(e)})
+    .catch((e)=>{alert(e)})
   };
 
   return (

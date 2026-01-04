@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
         // tenta buscar o usuário atual (token no localStorage)
         const { data } = await api.get("plantao/usuario/atual");
         setUser(data.usuario);
-        console.log(data)
       } catch {
         setUser(null);
       } finally {

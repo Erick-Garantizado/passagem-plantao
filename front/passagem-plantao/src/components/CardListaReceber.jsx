@@ -47,7 +47,6 @@ const CardListaReceber = (props) => {
     window.location.reload()
     })
     .catch( (e) => {
-    console.log(e)
     setOpenBackdrop(false)
     alert('erro')
     })

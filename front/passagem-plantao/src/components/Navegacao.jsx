@@ -11,7 +11,6 @@ const Navegacao = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('user-token');
-    console.log(token)
     if (!token) {
       setUsuarioAtual('');
       setPermissao(null);
