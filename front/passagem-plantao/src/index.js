@@ -21,7 +21,7 @@ root.render(
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Login/>} />
-          <Route path='/area' element={<><Area/></>} />
+          <Route path='/area' element={<ProtectedRoute><Area/></ProtectedRoute>} />
           <Route path='/passagem' element={<ProtectedRoute><Passar/></ProtectedRoute>} />
           <Route path='/listagem' element={<ProtectedRoute><Listar/></ProtectedRoute>} />
           <Route path='/meusplantoes' element={<ProtectedRoute><MeusPlantoes/></ProtectedRoute>} />
