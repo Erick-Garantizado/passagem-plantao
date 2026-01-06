@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
 
   if (loading) return <p>Carregando...</p>;
 
-  if (!user || user.ativo === false) {
+  if (user.ativo === false) {
     return <Navigate to="/erro" />;
   }
 
