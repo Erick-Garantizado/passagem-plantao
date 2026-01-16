@@ -8,13 +8,31 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const logout = () => {
+    localStorage.removeItem("user-token");
+    setUser(null);
+  };
+
   useEffect(() => {
     const loadUser = async () => {
+      const token = localStorage.getItem("user-token")
+      
+      if (!token) {
+        setUser(null)
+        setLoading(false)
+        return
+      }
+
       try {
-        const { data } = await api.get("plantao/usuario/atual");
-        setUser(data.usuario);
+        const { data } = await api.get("plantao/usuario/atual", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        
+        setUser(data?.usuario ?? null);
       } catch {
-        setUser(null);
+        logout()
       } finally {
         setLoading(false);
       }
@@ -24,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );
