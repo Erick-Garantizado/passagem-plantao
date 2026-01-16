@@ -5,9 +5,11 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
 import { AccountCircle } from '@mui/icons-material';
+import { useAuth } from '../context/AuthContext';
 
 
 const Navegacao = () => {
+  const { logout } = useAuth()
 
   useEffect(() => {
     const token = localStorage.getItem('user-token');
@@ -74,7 +76,7 @@ const Navegacao = () => {
   }
 
   const handleSair = () => {
-    localStorage.removeItem('user-token')
+    logout()
     navigate('/')
   }
 
