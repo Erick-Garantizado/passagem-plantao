@@ -5,7 +5,7 @@ import api from "../services/api";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
   const logout = () => {
