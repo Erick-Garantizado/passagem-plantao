@@ -74,6 +74,11 @@ const Navegacao = () => {
     handleCloseNavMenu()
     navigate('/cadastro')
   }
+  
+  const handleDashboard = () => {
+    handleCloseNavMenu()
+    navigate('/area')
+  }
 
   const handleSair = () => {
     logout()
@@ -120,6 +125,9 @@ const Navegacao = () => {
               <MenuItem onClick={handleMeus}>
                 <Typography sx={{ textAlign: 'center' }}> Meus plantões </Typography>
               </MenuItem>
+              <MenuItem onClick={handleDashboard}>
+                <Typography sx={{ textAlign: 'center' }}> Dashboard </Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -140,6 +148,12 @@ const Navegacao = () => {
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
               Meus plantões
+            </Button>            
+            <Button
+              onClick={handleDashboard}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Dashboard
             </Button>            
           </Box>
           <Box >
