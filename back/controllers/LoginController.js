@@ -54,18 +54,4 @@ module.exports = class LoginController {
         }
     }
 
-    static validaToken(req, res, next) {
-        const token = req.headers['authorization']
-        // Descriptografando o token
-        jwt.verify(token, process.env.JWT_KEY, async (error, success) => {
-            // Caso Deu errado
-            if (error) {
-                res.status(401).json({error: "Token inválido"})
-            // Caso deu certo
-            } else {
-                req.usuarioId = success // Mandando o id do usuário no corpo da requisição 
-                next() // Chamando o próximo metodo em routes
-            }
-        })
-    }
 }
