@@ -4,7 +4,8 @@ import pdfMake from './pdfConfig'
 export const gerarPDF = (dados) => {
     const docDefinition = {
         content: [
-            { text: "Teste do doc de passagem de plantão", style: "header", alignment: "center" },
+            { text: "Passagem de plantão", style: "header", alignment: "center" },
+            { text: " "},
             { text: `Data de hoje: ${new Date().toLocaleDateString()}`, style: "subheader" },
             { text: "-------------------------------------" },
             { text: `Data do plantão: ${new Date(dados.createdAt).toLocaleDateString('pt-BR')}`, style: "subheader" },
