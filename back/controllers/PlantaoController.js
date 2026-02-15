@@ -74,9 +74,12 @@ module.exports = class PlantaoController {
         try {
             const usuario = await usuarios.findOne({
                 where: {
-                    id: req.usuarioId.sub
+                    id: req.user.id
                 }
             })
+            if (!usuario) {
+                return res.status(404).json({error: 'usuario não encontrado'})
+            }
             res.json({ usuario })
         } catch (e) {
             res.status(500).json({

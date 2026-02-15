@@ -14,7 +14,7 @@ const Navegacao = () => {
   useEffect(() => {
     const token = localStorage.getItem('user-token');
     if (!token) {
-      setUsuarioAtual('');
+      setUsuarioAtual(null);
       setPermissao(null);
       return;
     }
@@ -27,12 +27,12 @@ const Navegacao = () => {
       setUsuarioAtual(null);
       setPermissao(null);
     })
-  }, [localStorage.getItem('user-token')])
+  }, [])
   
   const [permissao, setPermissao] = useState();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [usuarioAtual, setUsuarioAtual] = useState()
+  const [usuarioAtual, setUsuarioAtual] = useState(undefined)
   const navigate = useNavigate()
 
   const handleOpenNavMenu = (event) => {
