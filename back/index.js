@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "https://seu-projeto.vercel.app"
+        "https://passagem-plantao-kappa.vercel.app/"
     ]
 }))
 app.use('/', routerPublico)
