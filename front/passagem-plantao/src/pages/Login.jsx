@@ -37,7 +37,7 @@ const Login = () => {
     if (localStorage.getItem('user-token')) {
       navigate('/area')
       }
-  }, [])
+  }, [navigate])
 
   return (
     <>
