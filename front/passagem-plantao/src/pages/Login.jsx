@@ -34,7 +34,9 @@ const Login = () => {
   }
 
   useEffect( () => {
-    if (localStorage.getItem('user-token')) return navigate('/area')
+    if (localStorage.getItem('user-token')) {
+      navigate('/area')
+      }
   }, [])
 
   return (
