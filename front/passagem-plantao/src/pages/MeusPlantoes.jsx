@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
-import { Typography, Container } from '@mui/material'
+import { Container } from '@mui/material'
 import Navegacao from '../components/Navegacao'
 import CardLista from '../components/CardLista'
+import Esqueleto from '../components/Esqueleto'
+import SemRegistro from '../components/SemRegistro'
 import api from '../services/api'
 
 
 const MeusPlantoes = () => {
   const [plantao, setPlantao] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect( () => {
     api.get('plantao/meus')
@@ -29,21 +32,20 @@ const MeusPlantoes = () => {
       display:'flex', flexWrap:'wrap', mt:3
       }}><br />
         {
-          plantao.length !== 0 ? plantao.map( (dado) => (      
+          loading ? (
+            <Esqueleto/>
+          ) : plantao.length > 0 ? (
+          plantao.map( (dado) => (      
             <CardLista
+            key={dado.id}
             turno={dado.turno}
             data={dado.createdAt}
             chave={dado.id}
             descricao={dado.observacao}
             />
           )) 
-          :
-          (
-            <>
-              <Typography variant='h4'>
-                Sem registro de plantão
-              </Typography>
-            </>
+          ): (
+            <SemRegistro/>
           )
         }
       </Container>
