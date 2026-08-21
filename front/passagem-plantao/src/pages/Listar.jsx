@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Navegacao from '../components/Navegacao'
+import { useState, useEffect } from 'react'
 import { Container } from '@mui/material'
-import api from '../services/api'
+import Navegacao from '../components/Navegacao'
 import CardListaReceber from '../components/CardListaReceber'
 import Esqueleto from '../components/Esqueleto'
 import SemRegistro from '../components/SemRegistro'
+import api from '../services/api'
 
 
 const Listar = () => {
@@ -33,9 +33,11 @@ const Listar = () => {
         {
           loading ? (
             <Esqueleto/>
-          ) : plantao.length > 0 ? (
+          ):
+          plantao.length > 0 ? (
           plantao.map( (dado) => (
-            <CardListaReceber 
+            <CardListaReceber
+            key={dado.id}
             plantonista={dado.plantonista} 
             turno={dado.turno}
             data={dado.createdAt}
@@ -43,8 +45,8 @@ const Listar = () => {
             chave={dado.id}
             />
           ))
-        ): (
-          <SemRegistro/>
+          ): (
+            <SemRegistro/>
           )
         }
       </Container>
