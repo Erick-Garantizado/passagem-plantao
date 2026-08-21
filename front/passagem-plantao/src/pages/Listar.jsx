@@ -19,10 +19,10 @@ const Listar = () => {
       .catch((e) => {
         alert(e)
       })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [])
-
-  const [plantao, setPlantao] = useState([])
-  
 
   return (
     <>
