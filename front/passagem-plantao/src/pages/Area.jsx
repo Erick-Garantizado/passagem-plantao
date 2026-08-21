@@ -1,6 +1,6 @@
 import Navegacao from '../components/Navegacao'
 
-import { Grid, Paper, Typography } from "@mui/material";
+import { Container, Grid, Paper, Typography } from "@mui/material";
 
 function Card({ title, value }) {
   return (
@@ -16,23 +16,22 @@ const Area = () => {
   return (
     <>
       <Navegacao />
-      {/* <Container sx={{ width: '100vw', height: '93vh' }} >
-        <div className="corpo" ></div>
-      </Container> */}
       <br />
-      <Grid container spacing={3}>
-      <Grid item xs={12} md={4}>
-        <Card title="Criticos" value="25" />
-      </Grid>
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Card title="Criticos" value="25" />
+          </Grid>
 
-      <Grid item xs={12} md={4}>
-        <Card title="Pendentes" value="2" />
-      </Grid>
-      
-      <Grid item xs={12} md={4}>
-        <Card title="Total" value="30" />
-      </Grid>      
-    </Grid>
+          <Grid item xs={12} md={4}>
+            <Card title="Pendentes" value="2" />
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <Card title="Total" value="30" />
+          </Grid>      
+        </Grid>
+      </Container>
     </>
   )
 }
