@@ -1,42 +1,33 @@
-import { useState, useEffect } from 'react'
-//import Navegacao from '../components/Navegacao'
-import { Container, Typography, Button } from '@mui/material'
-import { useParams } from 'react-router-dom';
-import api from '../services/api'
-import PdfButton from '../components/PdfButton';
-
+import { Box, Container, Skeleton } from '@mui/material'
 
 
 const Detalhes = () => {
-  const { id } = useParams()
-  const [plantao, setPlantao] = useState({})
 
-  useEffect( () => {
-    api.get('plantao/detalhes/' + id)
-    .then(({ data }) => {
-      setPlantao(data.plantao)
-    })
-    .catch((e) => {
-      alert(e)
-    })
-  } , [id])
   return (
-    <>
-      <Container sx={{ width: '100vw', height: '100vh' }} >
-        <Typography> Plantonista : {plantao.id_pass} </Typography>
-        <Typography> Receptor(a) : {plantao.id_receb} </Typography>
-        <Typography> Observação: {plantao.observacao} </Typography>
-        <Typography> Turno: {plantao.turno} </Typography>
-        <Typography> Situação: 
-          {
-            plantao.situacao === false ? 
-            ( <Button variant="contained" color="error" size="small" >Pendente</Button> ) :
-            ( <Button variant="contained" color="success">OK</Button> )
-          } 
-        </Typography>
-        <PdfButton/>
-      </Container>
-    </>
+    <Container>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }} >
+      <Skeleton
+        variant="rectangular"
+        width={345}
+        height={200}
+      />
+      <Skeleton
+        variant="rectangular"
+        width={345}
+        height={200}
+      />
+      <Skeleton
+        variant="rectangular"
+        width={345}
+        height={200}
+      />
+    </Box>
+    </Container>
   )
 }
 

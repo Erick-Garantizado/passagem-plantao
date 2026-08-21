@@ -51,7 +51,6 @@ const Login = () => {
 
         <Card sx={{ py: 5, px: 10, width: '40%', display: 'flex', 
         alignItems: 'center', flexDirection: 'column', }}>
-          {/* <img src={ Logo } alt="logo TI" width="250" /> */}
           
           <Typography variant='h4' align="center">
             Login
