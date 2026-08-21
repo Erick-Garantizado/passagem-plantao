@@ -16,6 +16,9 @@ const MeusPlantoes = () => {
     .catch((e) => {
       alert(e)
     })
+    .finally(() => {
+      setLoading(false)
+    })
   }, [])
 
 
