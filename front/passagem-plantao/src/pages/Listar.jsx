@@ -31,7 +31,10 @@ const Listar = () => {
         display:'flex', flexWrap:'wrap', mt:3
       }}><br />
         {
-          plantao.length !== 0 ? plantao.map( (dado) => (
+          loading ? (
+            <Esqueleto/>
+          ) : plantao.length > 0 ? (
+          plantao.map( (dado) => (
             <CardListaReceber 
             plantonista={dado.plantonista} 
             turno={dado.turno}
@@ -40,13 +43,8 @@ const Listar = () => {
             chave={dado.id}
             />
           ))
-          :
-          (
-            <>
-              <Typography variant='h4'>
-                Sem registro de plantão a ser recebido
-              </Typography>
-            </>
+        ): (
+          <SemRegistro/>
           )
         }
       </Container>
