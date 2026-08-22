@@ -1,11 +1,10 @@
-import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
-import Button from '@mui/material/Button';
+import { AppBar, Box, Button, Container, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import { AccountCircle, Logout, Person } from '@mui/icons-material';
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import api from '../services/api'
-import { AccountCircle } from '@mui/icons-material';
 import { useAuth } from '../context/AuthContext';
+import api from '../services/api'
 
 
 const Navegacao = () => {
@@ -164,7 +163,6 @@ const Navegacao = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton color="inherit" onClick={handleOpenUserMenu} sx={{ p: 2 }} size="large" >
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <AccountCircle />
               </IconButton>
             </Tooltip>
@@ -189,10 +187,16 @@ const Navegacao = () => {
                   <Typography sx={{ textAlign: 'center' }}>Cadastrar usuário</Typography>
                 </MenuItem>
               )}
-              <MenuItem onClick={handlePerfil}>
+              <MenuItem onClick={handlePerfil} disabled={true}>
+                <ListItemIcon>
+                  <Person/>
+                </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}>Perfil</Typography>
               </MenuItem>
               <MenuItem onClick={handleSair}>
+                <ListItemIcon>
+                  <Logout/>
+                </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}>Logout</Typography>
               </MenuItem>
             </Menu>
