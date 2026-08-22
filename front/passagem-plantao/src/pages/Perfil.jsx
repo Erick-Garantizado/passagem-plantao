@@ -16,7 +16,6 @@ const Perfil = () => {
   const [confirmarSenha, setConfirmarSenha] = useState('')
   const [mostrarSenha, setMostrarSenha] = useState(false)
   const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false)
-  const [loading, setLoading] = useState(true)
   const [salvando, setSalvando] = useState(false)
   const [open, setOpen] = useState(false)
   const [msg, setMsg] = useState('')
@@ -31,9 +30,6 @@ const Perfil = () => {
         console.error(error)
         setMsg('Não foi possível carregar o perfil.')
         setOpen(true)
-      }) 
-      .finally( () => {
-        setLoading(false)
       })
   }, [])
 
