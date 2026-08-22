@@ -1,6 +1,8 @@
 import { AppBar, Box, Button, Container, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import { AccountCircle, Logout, Person, AssignmentInd } from '@mui/icons-material';
+import { AccountCircle, Logout, Person, AssignmentInd, 
+  IosShare, SystemUpdateAlt, WebAsset, Dashboard
+} from '@mui/icons-material';
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
@@ -116,15 +118,27 @@ const Navegacao = () => {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               <MenuItem onClick={handlePassar}>
+                <ListItemIcon>
+                  <IosShare/>
+                </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}> Passar plantão </Typography>
               </MenuItem>
               <MenuItem onClick={handleReceber}>
+              <ListItemIcon>
+                <SystemUpdateAlt/>
+              </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}> Receber plantão </Typography>
               </MenuItem>
               <MenuItem onClick={handleMeus}>
+                <ListItemIcon>
+                  <WebAsset/>
+                </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}> Meus plantões </Typography>
               </MenuItem>
               <MenuItem onClick={handleDashboard}>
+                <ListItemIcon>
+                  <Dashboard/>
+                </ListItemIcon>
                 <Typography sx={{ textAlign: 'center' }}> Dashboard </Typography>
               </MenuItem>
             </Menu>
