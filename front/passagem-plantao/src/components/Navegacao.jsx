@@ -1,6 +1,6 @@
-import { AppBar, Box, Button, Container, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Box, Button, Container, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import { AccountCircle, Logout, Person } from '@mui/icons-material';
+import { AccountCircle, Logout, Person, AssignmentInd } from '@mui/icons-material';
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext';
@@ -182,10 +182,16 @@ const Navegacao = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             > 
-              {permissao === 0 && (
-                <MenuItem onClick={handleCadastro}>
-                  <Typography sx={{ textAlign: 'center' }}>Cadastrar usuário</Typography>
-                </MenuItem>
+              {permissao === '0' && (
+                <>
+                  <MenuItem onClick={handleCadastro}>
+                    <ListItemIcon>
+                      <AssignmentInd/>
+                    </ListItemIcon>
+                    <Typography sx={{ textAlign: 'center' }}>Cadastrar usuário</Typography>
+                  </MenuItem>
+                  <Divider/>
+                </>
               )}
               <MenuItem onClick={handlePerfil} disabled={true}>
                 <ListItemIcon>
