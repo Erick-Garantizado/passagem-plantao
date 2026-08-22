@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Area from './pages/Area';
 import Passar from './pages/Passar';
 import Listar from './pages/Listar';
-import Detalhes from './pages/Detalhes';
+import Perfil from './pages/Perfil';
 import MeusPlantoes from './pages/MeusPlantoes';
 import Cadastro from './pages/Cadastro';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -25,8 +25,8 @@ root.render(
           <Route path='/passagem' element={<ProtectedRoute><Passar/></ProtectedRoute>} />
           <Route path='/listagem' element={<ProtectedRoute><Listar/></ProtectedRoute>} />
           <Route path='/meusplantoes' element={<ProtectedRoute><MeusPlantoes/></ProtectedRoute>} />
-          <Route path='/detalhes/:id' element={<ProtectedRoute><Detalhes/></ProtectedRoute>} />
           <Route path='/cadastro' element={<ProtectedRoute><Cadastro/></ProtectedRoute>} />
+          <Route path='/perfil' element={<ProtectedRoute><Perfil /></ProtectedRoute>} />
           <Route path='/erro' element={<Erro/>} />
         </Routes>
       </AuthProvider>
